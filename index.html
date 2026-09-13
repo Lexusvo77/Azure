@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07184d">
+<title>AZURA | Tienda de Moda</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#07184d;
+  --blue:#2747a8;
+  --light:#dce7ff;
+  --gray:#697386;
+  --bg:#f5f7fb;
+  --white:#fff;
+  --text:#111827;
+  --line:#e4e8f0;
+}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+
+.top{
+ background:var(--navy);
+ color:white;
+ text-align:center;
+ padding:9px;
+ font-size:12px;
+ letter-spacing:1.5px
+}
+
+header{
+ background:white;
+ position:sticky;
+ top:0;
+ z-index:20;
+ border-bottom:1px solid var(--line)
+}
+
+.nav{
+ max-width:1180px;
+ margin:auto;
+ height:72px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 20px
+}
+
+.logo{
+ font-size:25px;
+ font-weight:900;
+ letter-spacing:3px;
+ color:var(--navy)
+}
+
+.links{display:flex;gap:28px}
+.links a{
+ color:#182033;
+ text-decoration:none;
+ font-size:14px
+}
+
+.actions{display:flex;gap:9px}
+
+.iconbtn{
+ border:1px solid var(--line);
+ background:white;
+ border-radius:12px;
+ padding:10px 13px;
+ color:var(--navy)
+}
+
+.badge{
+ background:var(--navy);
+ color:white;
+ border-radius:20px;
+ padding:2px 6px;
+ font-size:10px
+}
+
+.hero{
+ background:linear-gradient(120deg,var(--navy),#19388c);
+ color:white
+}
+
+.heroInner{
+ max-width:1180px;
+ margin:auto;
+ min-height:470px;
+ padding:70px 25px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ align-items:center;
+ gap:30px
+}
+
+.hero h1{
+ font-size:clamp(45px,7vw,82px);
+ line-height:.92;
+ letter-spacing:-4px
+}
+
+.hero p{
+ margin:24px 0;
+ color:#dbe4ff;
+ max-width:500px;
+ line-height:1.6
+}
+
+.primary{
+ background:white;
+ color:var(--navy);
+ border:0;
+ border-radius:10px;
+ padding:14px 24px;
+ font-weight:800
+}
+
+/* TARJETA DE PORTADA CON IMAGEN */
+.heroCard{
+ height:340px;
+ border-radius:20px;
+ background:linear-gradient(145deg,#b9c8e9,#65779e 55%,#263b72);
+ background-size:cover;
+ background-position:center;
+ display:flex;
+ align-items:flex-end;
+ justify-content:center;
+ overflow:hidden
+}
+
+.heroCard span{
+ font-size:90px;
+ font-weight:900;
+ color:rgba(255,255,255,.7);
+ padding-bottom:25px
+}
+
+section{
+ max-width:1180px;
+ margin:auto;
+ padding:55px 20px
+}
+
+.title{
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ margin-bottom:25px
+}
+
+.title h2{
+ font-size:28px;
+ color:var(--navy)
+}
+
+.title p{
+ color:var(--gray);
+ font-size:13px
+}
+
+.categories{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:16px
+}
+
+.cat{
+ height:260px;
+ border-radius:15px;
+ overflow:hidden;
+ position:relative;
+ border:0;
+ background:#cbd6eb;
+ display:flex;
+ align-items:flex-end;
+ text-align:left
+}
+
+.cat .pic{
+ position:absolute;
+ inset:0;
+ background:linear-gradient(160deg,#dce7ff,#8da0c8 55%,#40547d)
+}
+
+.cat:nth-child(2) .pic{
+ background:linear-gradient(160deg,#d6e0f2,#7890b7 55%,#31476d)
+}
+
+.cat:nth-child(3) .pic{
+ background:linear-gradient(160deg,#eef2f8,#a9b3c3 55%,#68748a)
+}
+
+.cat:nth-child(4) .pic{
+ background:linear-gradient(160deg,#dce7ff,#9ab0df 55%,#536b9f)
+}
+
+.cat:nth-child(5) .pic{
+ background:linear-gradient(160deg,#c8d4ee,#7386b1 55%,#25375e)
+}
+
+.cat strong{
+ position:relative;
+ z-index:2;
+ color:white;
+ font-size:25px;
+ padding:20px;
+ text-shadow:0 2px 10px #07184d
+}
+
+.cat small{
+ position:absolute;
+ top:14px;
+ left:15px;
+ z-index:2;
+ background:white;
+ color:var(--navy);
+ padding:7px 10px;
+ border-radius:20px;
+ font-weight:bold;
+ font-size:10px
+}
+
+.toolbar{
+ display:flex;
+ gap:10px;
+ margin-bottom:25px
+}
+
+.search{
+ flex:1;
+ border:1px solid var(--line);
+ border-radius:10px;
+ padding:13px;
+ background:white
+}
+
+.select{
+ border:1px solid var(--line);
+ border-radius:10px;
+ padding:13px;
+ background:white
+}
+
+.products{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:18px
+}
+
+.product{
+ background:white;
+ border:1px solid var(--line);
+ border-radius:15px;
+ overflow:hidden
+}
+
+.productImg{
+ height:270px;
+ background:linear-gradient(145deg,#dbe4f6,#8294b8);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:white;
+ font-size:35px;
+ font-weight:900;
+ cursor:pointer
+}
+
+.productImg:hover{filter:brightness(.92)}
+
+.productBody{padding:15px}
+
+.productBody h3{
+ font-size:15px;
+ margin-bottom:7px
+}
+
+.price{
+ font-weight:900;
+ color:var(--navy);
+ font-size:17px
+}
+
+.add{
+ width:100%;
+ margin-top:12px;
+ padding:11px;
+ border:0;
+ border-radius:9px;
+ background:var(--navy);
+ color:white;
+ font-weight:bold
+}
+
+.info{
+ background:white;
+ border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line)
+}
+
+.infoGrid{
+ max-width:1180px;
+ margin:auto;
+ padding:35px 20px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px
+}
+
+.infoBox{
+ padding:20px;
+ border:1px solid var(--line);
+ border-radius:14px
+}
+
+.infoBox h3{
+ color:var(--navy);
+ margin-bottom:8px
+}
+
+.infoBox p{
+ color:var(--gray);
+ font-size:13px;
+ line-height:1.5
+}
+
+footer{
+ background:var(--navy);
+ color:white;
+ padding:35px 20px;
+ text-align:center
+}
+
+.footerAdmin{
+ margin-top:20px;
+ background:transparent;
+ color:#bdc8e8;
+ border:1px solid #52659c;
+ padding:8px 13px;
+ border-radius:8px;
+ font-size:11px
+}
+
+.detail{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:22px
+}
+
+.detailImg{
+ height:430px;
+ border-radius:14px;
+ background:linear-gradient(145deg,#dbe4f6,#8294b8);
+ background-size:cover;
+ background-position:center;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:white;
+ font-size:40px;
+ font-weight:900
+}
+
+.detail h2{
+ font-size:27px;
+ color:var(--navy);
+ margin:10px 0
+}
+
+.detailPrice{
+ font-size:23px;
+ font-weight:900;
+ color:var(--navy);
+ margin:10px 0 18px
+}
+
+.sizeTitle{
+ font-weight:bold;
+ margin:12px 0 8px
+}
+
+.sizes{
+ display:flex;
+ gap:8px
+}
+
+.size{
+ min-width:44px;
+ height:42px;
+ border:1px solid #bfc7d6;
+ background:white;
+ border-radius:8px;
+ font-weight:bold
+}
+
+.size.off{
+ color:#9aa1ad;
+ background:#eef1f5;
+ position:relative;
+ text-decoration:line-through;
+ cursor:not-allowed
+}
+
+.size.off:after{
+ content:"X";
+ position:absolute;
+ inset:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#777
+}
+
+.detailNote{
+ font-size:12px;
+ color:var(--gray);
+ margin:10px 0 15px
+}
+
+@media(max-width:650px){
+ .detail{grid-template-columns:1fr}
+ .detailImg{height:300px}
+}
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.55);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ z-index:50;
+ padding:18px
+}
+
+.modal.open{display:flex}
+
+.box{
+ background:white;
+ width:min(560px,100%);
+ max-height:90vh;
+ overflow:auto;
+ border-radius:18px;
+ padding:24px
+}
+
+.box h2{
+ color:var(--navy);
+ margin-bottom:18px
+}
+
+.close{
+ float:right;
+ border:0;
+ background:#eef2f8;
+ border-radius:50%;
+ width:32px;
+ height:32px
+}
+
+.cartItem{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:12px 0;
+ border-bottom:1px solid var(--line)
+}
+
+.total{
+ display:flex;
+ justify-content:space-between;
+ font-size:20px;
+ font-weight:900;
+ margin:20px 0
+}
+
+.checkout{
+ width:100%;
+ padding:14px;
+ border:0;
+ background:var(--navy);
+ color:white;
+ border-radius:10px;
+ font-weight:bold
+}
+
+.form{
+ display:grid;
+ gap:10px
+}
+
+.form input,
+.form textarea,
+.form select{
+ width:100%;
+ padding:12px;
+ border:1px solid var(--line);
+ border-radius:9px
+}
+
+.adminGrid{
+ display:grid;
+ gap:12px
+}
+
+.adminRow{
+ border:1px solid var(--line);
+ padding:14px;
+ border-radius:10px;
+ display:grid;
+ gap:8px
+}
+
+.adminNote{
+ font-size:12px;
+ color:var(--gray);
+ line-height:1.5;
+ margin-bottom:15px
+}
+
+@media(max-width:850px){
+ .links{display:none}
+
+ .heroInner{
+  grid-template-columns:1fr;
+  min-height:auto;
+  padding:55px 20px
+ }
+
+ .heroCard{height:230px}
+
+ .categories{
+  grid-template-columns:repeat(2,1fr)
+ }
+
+ .cat{height:210px}
+
+ .cat:last-child{
+  grid-column:span 2
+ }
+
+ .products{
+  grid-template-columns:repeat(2,1fr)
+ }
+
+ .productImg{height:220px}
+
+ .infoGrid{
+  grid-template-columns:1fr
+ }
+
+ .title{display:block}
+
+ .title p{margin-top:6px}
+}
+
+@media(max-width:480px){
+ .categories{gap:10px}
+ .cat{height:180px}
+ .cat strong{
+  font-size:19px;
+  padding:14px
+ }
+ .products{gap:10px}
+ .productImg{height:190px}
+ .nav{padding:0 12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top" id="topText">
+ ENVÍOS A TODA GUATEMALA • COMPRA ONLINE
+</div>
+
+<header>
+<nav class="nav">
+ <div class="logo" id="brand">AZURA</div>
+
+ <div class="links">
+  <a href="#inicio">Inicio</a>
+  <a href="#catalogo">Catálogo</a>
+  <a href="#envios">Envíos</a>
+  <a href="#contacto">Contacto</a>
+ </div>
+
+ <div class="actions">
+  <button class="iconbtn" onclick="openCart()">
+   🛒 <span class="badge" id="cartCount">0</span>
+  </button>
+ </div>
+</nav>
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+ <div class="heroInner">
+
+  <div>
+   <div style="letter-spacing:3px;font-size:12px" id="heroEyebrow">
+    NUEVA COLECCIÓN
+   </div>
+
+   <h1 id="heroTitle">
+    VISTE<br>
+    LO QUE<br>
+    TE REPRESENTA.
+   </h1>
+
+   <p id="heroText">
+    Descubre blusas, pantalones, vestidos, faldas y conjuntos seleccionados para darle estilo a cada ocasión.
+   </p>
+
+   <button
+    class="primary"
+    id="heroButton"
+    onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+    VER CATÁLOGO
+   </button>
+  </div>
+
+  <!-- ESTA ES LA TARJETA DONDE AHORA SE PUEDE PONER LA IMAGEN -->
+  <div class="heroCard">
+   <span id="heroCardText">MODA</span>
+  </div>
+
+ </div>
+</section>
+
+<section>
+ <div class="title">
+  <div>
+   <h2>Categorías</h2>
+   <p>Encuentra tu estilo</p>
+  </div>
+ </div>
+
+ <div class="categories">
+
+  <button class="cat" onclick="filterCat('Blusas')">
+   <div class="pic"></div>
+   <small>01</small>
+   <strong>BLUSAS</strong>
+  </button>
+
+  <button class="cat" onclick="filterCat('Pantalones')">
+   <div class="pic"></div>
+   <small>02</small>
+   <strong>PANTALONES</strong>
+  </button>
+
+  <button class="cat" onclick="filterCat('Vestidos')">
+   <div class="pic"></div>
+   <small>03</small>
+   <strong>VESTIDOS</strong>
+  </button>
+
+  <button class="cat" onclick="filterCat('Faldas')">
+   <div class="pic"></div>
+   <small>04</small>
+   <strong>FALDAS</strong>
+  </button>
+
+  <button class="cat" onclick="filterCat('Conjuntos')">
+   <div class="pic"></div>
+   <small>05</small>
+   <strong>CONJUNTOS</strong>
+  </button>
+
+ </div>
+</section>
+
+<section id="catalogo">
+
+ <div class="title">
+  <div>
+   <h2>Catálogo</h2>
+   <p>Productos disponibles</p>
+  </div>
+ </div>
+
+ <div class="toolbar">
+
+  <input
+   class="search"
+   id="search"
+   placeholder="Buscar producto..."
+   oninput="renderProducts()">
+
+  <select
+   class="select"
+   id="filter"
+   onchange="renderProducts()">
+
+   <option value="Todos">Todas</option>
+   <option>Blusas</option>
+   <option>Pantalones</option>
+   <option>Vestidos</option>
+   <option>Faldas</option>
+   <option>Conjuntos</option>
+
+  </select>
+
+ </div>
+
+ <div class="products" id="products"></div>
+
+</section>
+
+<div class="info" id="envios">
+
+ <div class="infoGrid">
+
+  <div class="infoBox">
+   <h3 id="shippingTitle">📦 Envíos</h3>
+   <p id="shippingText">
+    Realizamos envíos a toda Guatemala. El costo y tiempo se muestran antes de confirmar tu pedido.
+   </p>
+  </div>
+
+  <div class="infoBox">
+   <h3 id="easyTitle">🛍️ Compra fácil</h3>
+   <p id="easyText">
+    Agrega tus productos al carrito, revisa tu total y completa tus datos para realizar tu pedido.
+   </p>
+  </div>
+
+  <div class="infoBox" id="contacto">
+   <h3 id="contactTitle">Contacto</h3>
+   <p id="contactText">
+    ¿Tienes dudas? Escríbenos por Instagram y te ayudaremos con tu compra.
+   </p>
+  </div>
+
+ </div>
+
+</div>
+
+<div style="max-width:1180px;margin:0 auto;padding:0 20px 45px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+
+ <a
+  id="instagramLink"
+  href="https://www.instagram.com/"
+  target="_blank"
+  rel="noopener"
+  style="text-decoration:none;background:#07184d;color:white;padding:12px 20px;border-radius:10px;font-weight:bold">
+  Instagram
+ </a>
+
+ <a
+  id="tiktokLink"
+  href="https://www.tiktok.com/"
+  target="_blank"
+  rel="noopener"
+  style="text-decoration:none;background:#07184d;color:white;padding:12px 20px;border-radius:10px;font-weight:bold">
+  TikTok
+ </a>
+
+</div>
+
+</main>
+
+<footer>
+
+ <strong id="footerBrand">AZURA</strong>
+
+ <p style="margin-top:8px;color:#c6d0ea;font-size:12px">
+  Moda online • Guatemala
+ </p>
+
+ <button
+  class="footerAdmin"
+  onclick="openAdminLogin()">
+  Acceso administrador
+ </button>
+
+</footer>
+
+<div class="modal" id="cartModal">
+ <div class="box">
+
+  <button class="close" onclick="closeModal('cartModal')">×</button>
+
+  <h2>Tu carrito</h2>
+
+  <div id="cartItems"></div>
+
+  <div class="total">
+   <span>Total</span>
+   <span id="cartTotal">Q0</span>
+  </div>
+
+  <button class="checkout" onclick="openCheckout()">
+   CONTINUAR CON LA COMPRA
+  </button>
+
+ </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+ <div class="box">
+
+  <button class="close" onclick="closeModal('checkoutModal')">×</button>
+
+  <h2>Finalizar pedido</h2>
+
+  <div class="form">
+
+   <input id="name" placeholder="Nombre completo">
+
+   <input id="phone" placeholder="Teléfono">
+
+   <select id="department">
+
+    <option value="">Selecciona tu departamento</option>
+
+    <option>Alta Verapaz</option>
+    <option>Baja Verapaz</option>
+    <option>Chimaltenango</option>
+    <option>Chiquimula</option>
+    <option>El Progreso</option>
+    <option>Escuintla</option>
+    <option>Guatemala</option>
+    <option>Huehuetenango</option>
+    <option>Izabal</option>
+    <option>Jalapa</option>
+    <option>Jutiapa</option>
+    <option>Petén</option>
+    <option>Quetzaltenango</option>
+    <option>Quiché</option>
+    <option>Retalhuleu</option>
+    <option>Sacatepéquez</option>
+    <option>San Marcos</option>
+    <option>Santa Rosa</option>
+    <option>Sololá</option>
+    <option>Suchitepéquez</option>
+    <option>Totonicapán</option>
+    <option>Zacapa</option>
+
+   </select>
+
+   <input id="address" placeholder="Dirección de entrega">
+
+   <div style="border:1px solid #e4e8f0;border-radius:10px;padding:14px">
+
+    <strong style="display:block;color:#07184d;margin-bottom:10px">
+     Método de pago
+    </strong>
+
+    <label style="display:flex;align-items:center;gap:9px;margin-bottom:9px;font-size:14px">
+
+     <input
+      type="radio"
+      name="payment"
+      value="Tarjeta de crédito o débito"
+      checked>
+
+     💳 Tarjeta de crédito o débito
+
+    </label>
+
+    <label style="display:flex;align-items:center;gap:9px;font-size:14px">
+
+     <input
+      type="radio"
+      name="payment"
+      value="Enviar información por Instagram">
+
+     Instagram — enviar información del pedido
+
+    </label>
+
+   </div>
+
+   <button class="checkout" onclick="finishOrder()">
+    CONTINUAR
+   </button>
+
+  </div>
+
+  <p style="font-size:11px;color:#697386;margin-top:12px">
+   El total de tu pedido se calculará automáticamente.
+  </p>
+
+ </div>
+</div>
+
+<div class="modal" id="productModal">
+ <div class="box">
+
+  <button class="close" onclick="closeModal('productModal')">×</button>
+
+  <div id="productDetail"></div>
+
+ </div>
+</div>
+
+<div class="modal" id="adminLogin">
+ <div class="box">
+
+  <button class="close" onclick="closeModal('adminLogin')">×</button>
+
+  <h2>Administrador</h2>
+
+  <p class="adminNote">
+   Área protegida para administrar productos y algunos textos de la tienda.
+   En esta versión los datos se guardan en este navegador.
+  </p>
+
+  <div class="form">
+
+   <input
+    type="password"
+    id="adminPass"
+    placeholder="Contraseña">
+
+   <button class="checkout" onclick="loginAdmin()">
+    ENTRAR
+   </button>
+
+  </div>
+
+ </div>
+</div>
+
+<div class="modal" id="adminModal">
+ <div class="box">
+
+  <button class="close" onclick="closeModal('adminModal')">×</button>
+
+  <h2>Panel administrador</h2>
+
+  <div class="adminGrid">
+
+   <div class="adminRow">
+
+    <strong>Configuración de la página</strong>
+
+    <p class="adminNote">
+     Aquí puedes editar los textos que aparecen en la portada y en las tarjetas inferiores, sin tocar el código.
+    </p>
+
+    <input id="editBrand" placeholder="Nombre de la tienda">
+
+    <input id="editTop" placeholder="Texto de la barra superior">
+
+    <input id="editEyebrow" placeholder="Texto pequeño de portada">
+
+    <textarea
+     id="editHeroTitle"
+     rows="3"
+     placeholder="Título principal de portada"></textarea>
+
+    <textarea
+     id="editHeroText"
+     rows="3"
+     placeholder="Descripción de portada"></textarea>
+
+    <input
+     id="editHeroButton"
+     placeholder="Texto del botón">
+
+    <input
+     id="editHeroCard"
+     placeholder="Texto dentro de la tarjeta de portada">
+
+    <!-- NUEVO: URL DE IMAGEN DE LA TARJETA -->
+    <input
+     id="editHeroImage"
+     placeholder="URL de imagen para la tarjeta de portada">
+
+    <input
+     id="editShippingTitle"
+     placeholder="Título de Envíos">
+
+    <textarea
+     id="editShippingText"
+     rows="3"
+     placeholder="Texto de Envíos"></textarea>
+
+    <input
+     id="editEasyTitle"
+     placeholder="Título de Compra fácil">
+
+    <textarea
+     id="editEasyText"
+     rows="3"
+     placeholder="Texto de Compra fácil"></textarea>
+
+    <input
+     id="editContactTitle"
+     placeholder="Título de Contacto">
+
+    <textarea
+     id="editContactText"
+     rows="3"
+     placeholder="Texto de Contacto"></textarea>
+
+    <input
+     id="editInstagram"
+     placeholder="Link de Instagram">
+
+    <input
+     id="editTikTok"
+     placeholder="Link de TikTok">
+
+    <input
+     id="editPayment"
+     placeholder="Link de pago Recurrente">
+
+    <button
+     class="checkout"
+     onclick="savePageConfig()">
+     GUARDAR CONFIGURACIÓN
+    </button>
+
+   </div>
+
+   <div class="adminRow">
+
+    <strong>Agregar producto</strong>
+
+    <input
+     id="pName"
+     placeholder="Nombre">
+
+    <input
+     id="pPrice"
+     type="number"
+     placeholder="Precio en quetzales">
+
+    <select id="pCat">
+     <option>Blusas</option>
+     <option>Pantalones</option>
+     <option>Vestidos</option>
+     <option>Faldas</option>
+     <option>Conjuntos</option>
+    </select>
+
+    <input
+     id="pImage"
+     placeholder="URL de imagen (opcional)">
+
+        <button class="checkout" onclick="addProduct()">
+    AGREGAR PRODUCTO
+   </button>
+
+  </div>
+
+  <div class="adminRow">
+   <strong>Productos actuales</strong>
+   <div id="adminProducts"></div>
+  </div>
+
+ </div>
+</div>
+
+<script>
+
+const defaultProducts=[
+ {
+  id:1,
+  name:"Blusa Essential",
+  price:89,
+  cat:"Blusas",
+  image:"",
+  sizes:{S:true,M:true,L:true}
+ },
+ {
+  id:2,
+  name:"Pantalón Denim",
+  price:149,
+  cat:"Pantalones",
+  image:"",
+  sizes:{S:true,M:false,L:true}
+ },
+ {
+  id:3,
+  name:"Vestido Elegance",
+  price:179,
+  cat:"Vestidos",
+  image:"",
+  sizes:{S:true,M:true,L:false}
+ },
+ {
+  id:4,
+  name:"Falda Classic",
+  price:119,
+  cat:"Faldas",
+  image:"",
+  sizes:{S:false,M:true,L:true}
+ },
+ {
+  id:5,
+  name:"Conjunto Urban",
+  price:199,
+  cat:"Conjuntos",
+  image:"",
+  sizes:{S:true,M:true,L:true}
+ },
+ {
+  id:6,
+  name:"Blusa Satin",
+  price:99,
+  cat:"Blusas",
+  image:"",
+  sizes:{S:true,M:false,L:true}
+ }
+];
+
+let products=
+ JSON.parse(localStorage.getItem("azuraProducts")||"null")
+ ||defaultProducts;
+
+let cart=
+ JSON.parse(localStorage.getItem("azuraCart")||"[]");
+
+function save(){
+
+ localStorage.setItem(
+  "azuraProducts",
+  JSON.stringify(products)
+ );
+
+ localStorage.setItem(
+  "azuraCart",
+  JSON.stringify(cart)
+);
+
+}
+
+function money(n){
+ return "Q"+Number(n).toFixed(0);
+}
+
+function renderProducts(){
+
+ const q=
+ document.getElementById("search")
+ .value
+ .toLowerCase();
+
+ const f=
+ document.getElementById("filter")
+ .value;
+
+ const list=products.filter(
+  p=>
+   (f==="Todos"||p.cat===f)&&
+   p.name.toLowerCase().includes(q)
+ );
+
+ document.getElementById("products").innerHTML=
+ list.map(p=>`
+
+  <article class="product">
+
+   <div
+    class="productImg"
+    onclick="openProduct(${p.id})"
+    style="${
+     p.image
+     ?`background-image:url('${p.image}');
+       background-size:cover;
+       background-position:center`
+     :""
+    }">
+
+    ${p.image?"":p.cat.toUpperCase()}
+
+   </div>
+
+   <div class="productBody">
+
+    <h3>${p.name}</h3>
+
+    <div class="price">
+     ${money(p.price)}
+    </div>
+
+    <button
+     class="add"
+     onclick="addCart(${p.id})">
+
+     AGREGAR AL CARRITO
+
+    </button>
+
+   </div>
+
+  </article>
+
+ `).join("")
+ ||"<p>No encontramos productos.</p>";
+
+}
+
+function filterCat(c){
+
+ document.getElementById("filter").value=c;
+
+ document
+ .getElementById("catalogo")
+ .scrollIntoView({behavior:"smooth"});
+
+ renderProducts();
+
+}
+
+function openProduct(id){
+
+ const p=products.find(x=>x.id===id);
+
+ if(!p)return;
+
+ const sizes=
+ p.sizes||{
+  S:true,
+  M:true,
+  L:true
+ };
+
+ const sizeButtons=
+ ['S','M','L'].map(x=>`
+
+  <button
+   class="size ${sizes[x]?'':'off'}"
+   ${
+    sizes[x]
+    ?`onclick="selectSize(this,'${x}')"`
+    :""
+   }>
+
+   ${x}
+
+  </button>
+
+ `).join("");
+
+ const imageStyle=
+ p.image
+ ?`background-image:url('${p.image}');
+   background-size:cover;
+   background-position:center;`
+ :"";
+
+ document.getElementById("productDetail").innerHTML=`
+
+  <div class="detail">
+
+   <div
+    class="detailImg"
+    style="${imageStyle}">
+
+    ${p.image?"":p.cat.toUpperCase()}
+
+   </div>
+
+   <div>
+
+    <div
+     style="
+      font-size:11px;
+      color:var(--gray);
+      letter-spacing:1px">
+
+     ${p.cat.toUpperCase()}
+
+    </div>
+
+    <h2>${p.name}</h2>
+
+    <div class="detailPrice">
+     ${money(p.price)}
+    </div>
+
+    <div class="sizeTitle">
+     Tallas disponibles
+    </div>
+
+    <div class="sizes">
+     ${sizeButtons}
+    </div>
+
+    <p class="detailNote">
+     Si una talla no está disponible,
+     aparecerá marcada con X.
+    </p>
+
+    <button
+     class="add"
+     onclick="
+      addCart(${p.id});
+      closeModal('productModal')
+     ">
+
+     AGREGAR AL CARRITO
+
+    </button>
+
+   </div>
+
+  </div>
+
+ `;
+
+ document
+ .getElementById("productModal")
+ .classList.add("open");
+
+}
+
+function selectSize(btn,size){
+
+ document
+ .querySelectorAll("#productDetail .size")
+ .forEach(
+  b=>b.style.outline="none"
+ );
+
+ btn.style.outline=
+ "2px solid var(--blue)";
+
+ btn.dataset.selected=size;
+
+}
+
+function addCart(id){
+
+ const p=
+ products.find(x=>x.id===id);
+
+ if(!p)return;
+
+ cart.push(p);
+
+ save();
+
+ updateCart();
+
+ toast("Producto agregado");
+
+}
+
+function updateCart(){
+
+ document
+ .getElementById("cartCount")
+ .textContent=cart.length;
+
+}
+
+function openCart(){
+
+ renderCart();
+
+ document
+ .getElementById("cartModal")
+ .classList.add("open");
+
+}
+
+function renderCart(){
+
+ const el=
+ document.getElementById("cartItems");
+
+ el.innerHTML=
+ cart.length
+
+ ?cart.map((p,i)=>`
+
+  <div class="cartItem">
+
+   <span>
+    ${p.name}
+    <br>
+    <small>${money(p.price)}</small>
+   </span>
+
+   <button
+    onclick="removeCart(${i})">
+
+    Eliminar
+
+   </button>
+
+  </div>
+
+ `).join("")
+
+ :"<p>Tu carrito está vacío.</p>";
+
+ document
+ .getElementById("cartTotal")
+ .textContent=
+ money(
+  cart.reduce(
+   (s,p)=>s+p.price,
+   0
+  )
+ );
+
+}
+
+function removeCart(i){
+
+ cart.splice(i,1);
+
+ save();
+
+ updateCart();
+
+ renderCart();
+
+}
+
+function openCheckout(){
+
+ if(!cart.length){
+
+  toast("Agrega al menos un producto");
+
+  return;
+
+ }
+
+ closeModal("cartModal");
+
+ document
+ .getElementById("checkoutModal")
+ .classList.add("open");
+
+}
+
+function finishOrder(){
+
+ const name=
+ document.getElementById("name")
+ .value.trim();
+
+ const phone=
+ document.getElementById("phone")
+ .value.trim();
+
+ const department=
+ document.getElementById("department")
+ .value;
+
+ const address=
+ document.getElementById("address")
+ .value.trim();
+
+ const payment=
+ document.querySelector(
+  'input[name="payment"]:checked'
+ )?.value;
+
+ if(
+  !name||
+  !phone||
+  !department||
+  !address
+ ){
+
+  toast(
+   "Completa nombre, teléfono, departamento y dirección"
+  );
+
+  return;
+
+ }
+
+ const total=
+ cart.reduce(
+  (sum,p)=>sum+p.price,
+  0
+ );
+
+ const detail=
+ cart.map(
+  p=>`${p.name} - ${money(p.price)}`
+ ).join(", ");
+
+ const text=
+ `Hola, quiero realizar este pedido en AZURA. `+
+ `Productos: ${detail}. `+
+ `Total: ${money(total)}. `+
+ `Nombre: ${name}. `+
+ `Teléfono: ${phone}. `+
+ `Departamento: ${department}. `+
+ `Dirección: ${address}. `+
+ `Método de pago: ${payment}.`;
+
+ const config=getPageConfig();
+
+ if(
+  payment==="Tarjeta de crédito o débito"
+ ){
+
+  if(!config.payment){
+
+   alert(
+    "Primero agrega tu enlace de Recurrente desde Administración → Configuración."
+   );
+
+   return;
+
+  }
+
+  window.open(
+   config.payment,
+   "_blank"
+  );
+
+ }else{
+
+  navigator.clipboard
+  ?.writeText(text)
+  .catch(()=>{});
+
+  window.open(
+   config.instagram ||
+   "https://www.instagram.com/",
+   "_blank"
+  );
+
+  alert(
+   "La información del pedido fue copiada. En Instagram puedes pegarla en el mensaje de la tienda."
+  );
+
+ }
+
+}
+
+function openAdminLogin(){
+
+ document
+ .getElementById("adminLogin")
+ .classList.add("open");
+
+}
+
+function loginAdmin(){
+
+ if(
+  document.getElementById("adminPass").value
+  ==="1234"
+ ){
+
+  closeModal("adminLogin");
+
+  document
+  .getElementById("adminModal")
+  .classList.add("open");
+
+  renderAdmin();
+
+ }else{
+
+  toast("Contraseña incorrecta");
+
+ }
+
+}
+
+function renderAdmin(){
+
+ document.getElementById("adminProducts").innerHTML=
+
+ products.map(p=>`
+
+  <div
+   style="
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid #eee">
+
+   ${p.name}
+
+   <button
+    onclick="deleteProduct(${p.id})">
+
+    Eliminar
+
+   </button>
+
+  </div>
+
+ `).join("");
+
+}
+
+function addProduct(){
+
+ const name=
+ document.getElementById("pName")
+ .value.trim();
+
+ const price=
+ Number(
+  document.getElementById("pPrice").value
+ );
+
+ const cat=
+ document.getElementById("pCat").value;
+
+ const image=
+ document.getElementById("pImage")
+ .value.trim();
+
+ if(!name||!price){
+
+  toast("Completa nombre y precio");
+
+  return;
+
+ }
+
+ products.push({
+
+  id:Date.now(),
+
+  name:name,
+
+  price:price,
+
+  cat:cat,
+
+  image:image,
+
+  sizes:{
+   S:true,
+   M:true,
+   L:true
+  }
+
+ });
+
+ save();
+
+ renderProducts();
+
+ renderAdmin();
+
+ document.getElementById("pName").value="";
+
+ document.getElementById("pPrice").value="";
+
+ document.getElementById("pImage").value="";
+
+}
+
+function deleteProduct(id){
+
+ products=
+ products.filter(
+  p=>p.id!==id
+ );
+
+ save();
+
+ renderProducts();
+
+ renderAdmin();
+
+}
+
+
+/* =========================
+   CONFIGURACIÓN DE LA PÁGINA
+   ========================= */
+
+const defaultPageConfig={
+
+ brand:"AZURA",
+
+ top:
+ "ENVÍOS A TODA GUATEMALA • COMPRA ONLINE",
+
+ eyebrow:
+ "NUEVA COLECCIÓN",
+
+ heroTitle:
+ "VISTE\\nLO QUE\\nTE REPRESENTA.",
+
+ heroText:
+ "Descubre blusas, pantalones, vestidos, faldas y conjuntos seleccionados para darle estilo a cada ocasión.",
+
+ heroButton:
+ "VER CATÁLOGO",
+
+ heroCard:
+ "MODA",
+
+ /* NUEVO */
+ heroImage:"",
+
+ shippingTitle:
+ "📦 Envíos",
+
+ shippingText:
+ "Realizamos envíos a toda Guatemala. El costo y tiempo se muestran antes de confirmar tu pedido.",
+
+ easyTitle:
+ "🛍️ Compra fácil",
+
+ easyText:
+ "Agrega tus productos al carrito, revisa tu total y completa tus datos para realizar tu pedido.",
+
+ contactTitle:
+ "Contacto",
+
+ contactText:
+ "¿Tienes dudas? Escríbenos por Instagram y te ayudaremos con tu compra.",
+
+ instagram:"",
+
+ tiktok:"",
+
+ payment:""
+
+};
+
+function getPageConfig(){
+
+ const saved=
+ JSON.parse(
+  localStorage.getItem("azuraPageConfig")
+  ||"null"
+ );
+
+ return Object.assign(
+  {},
+  defaultPageConfig,
+  saved||{}
+ );
+
+}
+
+function savePageConfig(){
+
+ const c={
+
+  brand:
+   document
+   .getElementById("editBrand")
+   .value.trim()
+   ||"AZURA",
+
+  top:
+   document
+   .getElementById("editTop")
+   .value.trim(),
+
+  eyebrow:
+   document
+   .getElementById("editEyebrow")
+   .value.trim(),
+
+  heroTitle:
+   document
+   .getElementById("editHeroTitle")
+   .value,
+
+  heroText:
+   document
+   .getElementById("editHeroText")
+   .value.trim(),
+
+  heroButton:
+   document
+   .getElementById("editHeroButton")
+   .value.trim(),
+
+  heroCard:
+   document
+   .getElementById("editHeroCard")
+   .value.trim(),
+
+  /* NUEVO: IMAGEN DE PORTADA */
+  heroImage:
+   document
+   .getElementById("editHeroImage")
+   .value.trim(),
+
+  shippingTitle:
+   document
+   .getElementById("editShippingTitle")
+   .value.trim(),
+
+  shippingText:
+   document
+   .getElementById("editShippingText")
+   .value.trim(),
+
+  easyTitle:
+   document
+   .getElementById("editEasyTitle")
+   .value.trim(),
+
+  easyText:
+   document
+   .getElementById("editEasyText")
+   .value.trim(),
+
+  contactTitle:
+   document
+   .getElementById("editContactTitle")
+   .value.trim(),
+
+  contactText:
+   document
+   .getElementById("editContactText")
+   .value.trim(),
+
+  instagram:
+   document
+   .getElementById("editInstagram")
+   .value.trim(),
+
+  tiktok:
+   document
+   .getElementById("editTikTok")
+   .value.trim(),
+
+  payment:
+   document
+   .getElementById("editPayment")
+   .value.trim()
+
+ };
+
+ localStorage.setItem(
+  "azuraPageConfig",
+  JSON.stringify(c)
+ );
+
+ applyPageConfig();
+
+ toast("Configuración guardada");
+
+}
+
+function applyPageConfig(){
+
+ const c=getPageConfig();
+
+ document
+ .getElementById("brand")
+ .textContent=c.brand;
+
+ document
+ .getElementById("footerBrand")
+ .textContent=c.brand;
+
+ document
+ .getElementById("topText")
+ .textContent=c.top;
+
+ document
+ .getElementById("heroEyebrow")
+ .textContent=c.eyebrow;
+
+ document
+ .getElementById("heroTitle")
+ .innerHTML=
+ c.heroTitle.replace(
+  /\\n/g,
+  "<br>"
+ );
+
+ document
+ .getElementById("heroText")
+ .textContent=c.heroText;
+
+ document
+ .getElementById("heroButton")
+ .textContent=c.heroButton;
+
+ document
+ .getElementById("heroCardText")
+ .textContent=c.heroCard;
+
+
+/* =========================
+   IMAGEN NUEVA DE LA TARJETA
+   ========================= */
+
+ const heroCard=
+ document.querySelector(".heroCard");
+
+ if(c.heroImage){
+
+  heroCard.style.backgroundImage=
+   `url("${c.heroImage.replace(/"/g,"%22")}")`;
+
+  heroCard
+   .querySelector("#heroCardText")
+   .style.display="none";
+
+ }else{
+
+  heroCard.style.backgroundImage=
+   "linear-gradient(145deg,#b9c8e9,#65779e 55%,#263b72)";
+
+  heroCard
+   .querySelector("#heroCardText")
+   .style.display="block";
+
+ }
+
+
+ document
+ .getElementById("shippingTitle")
+ .textContent=c.shippingTitle;
+
+ document
+ .getElementById("shippingText")
+ .textContent=c.shippingText;
+
+ document
+ .getElementById("easyTitle")
+ .textContent=c.easyTitle;
+
+ document
+ .getElementById("easyText")
+ .textContent=c.easyText;
+
+ document
+ .getElementById("contactTitle")
+ .textContent=c.contactTitle;
+
+ document
+ .getElementById("contactText")
+ .textContent=c.contactText;
+
+
+/* Cargar configuración dentro del panel */
+
+ const fields={
+
+  editBrand:c.brand,
+
+  editTop:c.top,
+
+  editEyebrow:c.eyebrow,
+
+  editHeroTitle:c.heroTitle,
+
+  editHeroText:c.heroText,
+
+  editHeroButton:c.heroButton,
+
+  editHeroCard:c.heroCard,
+
+  editHeroImage:c.heroImage,
+
+  editShippingTitle:c.shippingTitle,
+
+  editShippingText:c.shippingText,
+
+  editEasyTitle:c.easyTitle,
+
+  editEasyText:c.easyText,
+
+  editContactTitle:c.contactTitle,
+
+  editContactText:c.contactText,
+
+  editInstagram:c.instagram,
+
+  editTikTok:c.tiktok,
+
+  editPayment:c.payment
+
+ };
+
+ Object.entries(fields).forEach(
+  ([id,val])=>{
+
+   const element=
+    document.getElementById(id);
+
+   if(element){
+    element.value=val;
+   }
+
+  }
+ );
+
+
+ const ig=
+ document.getElementById("instagramLink");
+
+ const tt=
+ document.getElementById("tiktokLink");
+
+ ig.href=
+ c.instagram ||
+ "https://www.instagram.com/";
+
+ tt.href=
+ c.tiktok ||
+ "https://www.tiktok.com/";
+
+}
+
+function closeModal(id){
+
+ document
+ .getElementById(id)
+ .classList
+ .remove("open");
+
+}
+
+function toast(t){
+
+ alert(t);
+
+}
+
+
+/* INICIAR PÁGINA */
+
+applyPageConfig();
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
